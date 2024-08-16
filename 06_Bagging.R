@@ -36,8 +36,10 @@ for (i in seq_along(ntree)) {
   set.seed(123)
   # perform bagged model
   model <- bagging(
-  formula = Sale_Price ~ .,
-  data    = ames_train,
+  formula = Phonation ~ H1c.resid + h1h2c + h2h4c + h1a1c + h1a2c + h1a3c +
+    h42Kc + h2Kh5Kc + cpp + energy + hnr05 + hnr15 + hnr25 + hnr35 + shr +
+    f0 + f1 + f2 + b1 + b2 + epoch + soe,
+  data    = slz_train,
   coob    = TRUE,
   control = rpart.control(minsplit = 2, cp = 0),
   nbagg   = ntree[i]

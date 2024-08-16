@@ -8,8 +8,14 @@
 #
 #-------------------------------------------------------------------------------
 
-# Preprocessing the data for bagging
+### Rename seg_End
+colnames(slz)[colnames(slz) == 'seg_End'] <- 'Duration'
 
+### Rearranging values for analysis and comparison
+slz <- slz %>% 
+  mutate(idnum = row_number())
+
+# Preprocessing the data for bagging
 slz_bagging <- slz %>%
   mutate(h1c = (H1c_means005 + H1c_means006)/2,
          h1h2c = (H1H2c_means005 + H1H2c_means006)/2,

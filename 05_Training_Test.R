@@ -33,5 +33,5 @@ slz_train  <- training(split_strat)
 slz_test   <- testing(split_strat)
 
 # consistent response ratio between train & test
-table(train_strat$Phonation) %>% prop.table()
-table(test_strat$Phonation) %>% prop.table()
+table(slz_train$Phonation) %>% prop.table()
+table(slz_test$Phonation) %>% prop.table()
