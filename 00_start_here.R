@@ -10,7 +10,7 @@
 
 ### install packages if not yet installed
 packages <- c("lme4","tidyverse","viridis", "rsample", "caret", "rpart", 
-              "ipred", "here", "reshape2")
+              "ipred", "here", "reshape2", "vip", "randomForest")
 if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
   install.packages(setdiff(packages, rownames(installed.packages())))  
 }
@@ -25,8 +25,10 @@ library(reshape2) # for data manipulation
 library(lme4)   # for creating residual H1*     
 library(rsample)   # for resampling procedures
 library(caret)     # for resampling and model training
+library(randomForest)     # for tree generation
 library(rpart)       # for fitting decision trees
 library(ipred)       # for fitting bagged decision trees
+library(vip)  # for feature interpretation
 
 # Loading the data
 
