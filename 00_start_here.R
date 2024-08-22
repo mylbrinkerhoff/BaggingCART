@@ -10,7 +10,7 @@
 
 ### install packages if not yet installed
 packages <- c("lme4","tidyverse","viridis", "rsample", "caret", "rpart", 
-              "ipred", "here", "reshape2", "vip", "randomForest")
+              "ipred", "here", "reshape2", "vip", "randomForest", "dbarts")
 if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
   install.packages(setdiff(packages, rownames(installed.packages())))  
 }
@@ -29,6 +29,7 @@ library(randomForest)     # for tree generation
 library(rpart)       # for fitting decision trees
 library(ipred)       # for fitting bagged decision trees
 library(vip)  # for feature interpretation
+library(dbarts) # for modeling with BART
 
 # Loading the data
 

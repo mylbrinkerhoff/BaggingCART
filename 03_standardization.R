@@ -12,7 +12,7 @@
 ### Standardization of measurements for ease of comparison across different 
 ### measures
 
-slz.s <- slz_fil %>% group_by(Speaker) %>%
+slz.s <- slz_fil %>% group_by(Speaker,Vowel) %>%
   mutate(h1cz = (h1c - mean(h1c, na.rm = T))/sd(h1c, na.rm = T),
          h1h2cz = (h1h2c - mean(h1h2c, na.rm = T))/sd(h1h2c, na.rm = T),
          h2h4cz = (h2h4c - mean(h2h4c, na.rm = T))/sd(h2h4c, na.rm = T),

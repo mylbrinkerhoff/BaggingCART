@@ -8,6 +8,11 @@
 #
 #-------------------------------------------------------------------------------
 
+slz.clean <- slz.clean %>% 
+    select(-c(formant_outlier))
+
+sum(is.na(slz.clean))
+
 # Loading Data
 slz.clean <- read.csv("data/processed/slz_cleaned.csv", header = TRUE)
 
@@ -35,3 +40,4 @@ slz_test   <- testing(split_strat)
 # consistent response ratio between train & test
 table(slz_train$Phonation) %>% prop.table()
 table(slz_test$Phonation) %>% prop.table()
+

@@ -8,16 +8,17 @@
 #
 #-------------------------------------------------------------------------------
 
+# save the formula as a variable
+formula <- Phonation ~ H1c.resid + h1h2cz + h2h4cz + h1a1cz + h1a2cz + h1a3cz + h42Kcz + h2Kh5Kcz + cppz + energyz + hnr05z + hnr15z + hnr25z + hnr35z + f0z + f1z + f2z + b1z + b2z + epochz + norm.soe
+
 # make bootstrapping reproducible
 set.seed(123)
 
 # train bagged model
 slz_bag1 <- bagging(
-  formula = Phonation ~ H1c.resid + h1h2c + h2h4c + h1a1c + h1a2c + h1a3c +
-    h42Kc + h2Kh5Kc + cpp + energy + hnr05 + hnr15 + hnr25 + hnr35 + shr +
-    f0 + f1 + f2 + b1 + b2 + epoch + soe,
+  formula = formula,
   data = slz_train,
-  nbagg = 100, 
+  nbagg = 400, 
   coob = T, 
   control = rpart.control(minsplit = 2, cp = 0)
 )
@@ -26,13 +27,11 @@ slz_bag1
 
 # Applying with caret to use 10-fold CV to see how well it performs
 slz_bag2 <- train(
-  Phonation ~ H1c.resid + h1h2c + h2h4c + h1a1c + h1a2c + h1a3c +
-    h42Kc + h2Kh5Kc + cpp + energy + hnr05 + hnr15 + hnr25 + hnr35 + shr +
-    f0 + f1 + f2 + b1 + b2 + epoch + soe,
+  Phonation ~ H1c.resid + h1h2cz + h2h4cz + h1a1cz + h1a2cz + h1a3cz + h42Kcz + h2Kh5Kcz + cppz + energyz + hnr05z + hnr15z + hnr25z + hnr35z + f0z + f1z + f2z + b1z + b2z + epochz + norm.soe,
   data = slz_train,
   method = "treebag",
   trControl = trainControl(method = "cv", number = 10),
-  nbagg = 200,  
+  nbagg = 400,  
   control = rpart.control(minsplit = 2, cp = 0)
 )
 
